@@ -4,7 +4,7 @@
 #include<iostream>
 
 Etoile::Etoile() {
-	this->z = std::rand() % height;
+	this->z = std::rand() % 4000;
 	std::random_device rd;
 	std::mt19937 gen(rd());
 	std::uniform_int_distribution<int> dis(-width, width);
@@ -22,23 +22,23 @@ const sf::CircleShape Etoile::getCercle()
 }
 
 void Etoile::update() {
-	z -= 2;     
+	z -= 10;     
 	if (z < 1) {
-		z = std::rand() % height;
 		std::random_device rd;
 		std::mt19937 gen(rd());
 		std::uniform_int_distribution<int> dis(-width, width);
 		std::uniform_int_distribution<int> dis2(-height, height);
 		this->x = dis(gen);
 		this->y = dis2(gen);
+		z = std::rand() % 4000;
 		this->formeCercle.setPosition(this->x, this->y);
 	}
 }
 
 void Etoile::draw() {
-	float offsetX = (x / z);
-	float offsetY = (y / z);
-	float scaleZ = 0.001*(2000.0 - z);
+	float offsetX = 3*(x / z);
+	float offsetY = 3*(y / z);
+	float scaleZ = 0.0001*(5000.0 - z);
 
 	this->formeCercle.move(offsetX, offsetY);
 	

@@ -22,7 +22,6 @@ void Starfield::run() {
 
         window.clear();
         
-        
         for (auto& etoile : etoiles) {
             sf::Transform t;
             t.translate(width / 2, height / 2);
@@ -31,7 +30,6 @@ void Starfield::run() {
             etoile.update();
 
         }
-        
 
         window.display();
     }
